@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import './styles.css'
+import LogoPrato from "../../assets/image/LogoPrato.jpg";
 
 function Home() {
   return (
@@ -7,7 +7,7 @@ function Home() {
       <Header />
       <div className="Content">
         <div className="Text">
-          <h1>Home</h1>
+          <h1>Rumo à Nutrição Consciente</h1>
           <p>
             Você já parou para pensar como a alimentação pode impactar
             diretamente na sua saúde e bem-estar? Imagine ter mais energia,
@@ -25,7 +25,9 @@ function Home() {
             jornada deliciosa em busca de uma vida mais saudável e equilibrada?
           </p>
         </div>
-        <div className="Image"></div>
+        <div className="Image">
+          <img src={LogoPrato} alt="Logo Prato" />
+        </div>
       </div>
     </>
   );
