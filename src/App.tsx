@@ -1,7 +1,9 @@
+import Home from "./Pages/Home/Index"
+
 function App() {
   return (
     <>
-      <h1>Nutri</h1>
+      <Home />
     </>
   )
 }
