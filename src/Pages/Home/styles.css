@@ -1,0 +1,31 @@
+.Content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .Text {
+    width: 50%;
+  }
+  
+  .Image {
+    width: 50%;
+    height: 100%;
+    background-image: url('path/to/your/image.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .Content {
+      flex-direction: column;
+    }
+  
+    .Text,
+    .Image {
+      width: 100%;
+    }
+  }
+  
