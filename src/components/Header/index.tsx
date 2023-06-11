@@ -3,9 +3,9 @@ function Header() {
     return (
       <>
       <div className="Header">
-        <h1>Nutri</h1>
-        <button>Home</button>
-        <button>Menu</button>
+        <h1 className='Logo'>Nutri</h1>
+        <button className='Navigation'>Home</button>
+        <button className='Navigation'>Menu</button>
       </div>
       </>
     )
