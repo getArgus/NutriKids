@@ -1,4 +1,6 @@
 import Header from "../../components/Header";
+import './styles.css'
+
 import LogoPrato from "../../assets/image/LogoPrato.jpg";
 
 function Home() {
@@ -28,6 +30,9 @@ function Home() {
         <div className="Image">
           <img src={LogoPrato} alt="Logo Prato" />
         </div>
+        <div className="Section Beneficions">Benefícios</div>
+        <div className="Section Nossso">Nosso</div>
+        <div className="Section Pratos">Pratos</div>
       </div>
     </>
   );
