@@ -40,6 +40,36 @@
         "carboidratos": 23.5,
         "fibra": 1.8
       }
+    ],
+    "receitas": [
+      {
+        "id": 1,
+        "nome": "Salada de Frutas",
+        "ingredientes": [
+          "Maçã",
+          "Banana",
+          "Morango",
+          "Kiwi",
+          "Laranja"
+        ],
+        "modo_preparo": "Corte todas as frutas em cubos. Misture delicadamente em uma tigela e sirva.",
+        "porcoes": 2,
+        "tempo_preparo": "10 minutos"
+      },
+      {
+        "id": 2,
+        "nome": "Peito de Frango Grelhado com Legumes",
+        "ingredientes": [
+          "Frango Grelhado",
+          "Cenoura",
+          "Abobrinha",
+          "Pimentão",
+          "Cebola"
+        ],
+        "modo_preparo": "Tempere o peito de frango e grelhe até ficar dourado. Corte os legumes em tiras e refogue rapidamente em uma frigideira. Sirva o frango grelhado com os legumes refogados.",
+        "porcoes": 4,
+        "tempo_preparo": "30 minutos"
+      }
     ]
   }
   
