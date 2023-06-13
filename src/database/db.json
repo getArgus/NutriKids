@@ -1,1 +1,45 @@
-{}
+{
+    "alimentos": [
+      {
+        "id": 1,
+        "nome": "Maçã",
+        "grupo": "Frutas",
+        "calorias": 52,
+        "proteinas": 0.3,
+        "gorduras": 0.2,
+        "carboidratos": 14,
+        "fibra": 2.4
+      },
+      {
+        "id": 2,
+        "nome": "Frango Grelhado",
+        "grupo": "Carnes e Proteínas",
+        "calorias": 165,
+        "proteinas": 31,
+        "gorduras": 3.6,
+        "carboidratos": 0,
+        "fibra": 0
+      },
+      {
+        "id": 3,
+        "nome": "Cenoura",
+        "grupo": "Legumes",
+        "calorias": 41,
+        "proteinas": 0.9,
+        "gorduras": 0.2,
+        "carboidratos": 10,
+        "fibra": 2.8
+      },
+      {
+        "id": 4,
+        "nome": "Arroz Integral",
+        "grupo": "Grãos",
+        "calorias": 111,
+        "proteinas": 2.6,
+        "gorduras": 0.9,
+        "carboidratos": 23.5,
+        "fibra": 1.8
+      }
+    ]
+  }
+  
