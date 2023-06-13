@@ -1,4 +1,4 @@
-import Home from "./Pages/Home/Index"
+import Home from "./Pages/Menu"
 
 function App() {
   return (

@@ -1,92 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import data from '../../database/db.json';
 
 const MenuPage: React.FC = () => {
-  const [alimentos, setAlimentos] = useState<any[]>([]);
-  const [receitas, setReceitas] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage] = useState<number>(5);
+  const { alimentos, receitas } = data;
+  const [alimentosState, setAlimentos] = useState<any[]>([]);
+  const [receitasState, setReceitas] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState<string | null>(null);
+  const [currentItem, setCurrentItem] = useState<any | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const alimentosResponse = await axios.get('/api/alimentos');
-        setAlimentos(alimentosResponse.data);
+    setAlimentos(alimentos);
+    setReceitas(receitas);
+  }, [alimentos, receitas]);
 
-        const receitasResponse = await axios.get('/api/receitas');
-        setReceitas(receitasResponse.data);
-      } catch (error) {
-        console.error('Erro ao buscar os dados da API:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Paginação dos itens
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentAlimentos = alimentos.slice(indexOfFirstItem, indexOfLastItem);
-  const currentReceitas = receitas.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Função para alterar a página atual
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+  const handleItemClick = (item: any) => {
+    setCurrentItem(item);
+    setCurrentPage(item.tipo);
   };
 
-  return (
-    <div>
-      <h1>Menu NutriKids</h1>
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'alimentos':
+        return (
+          <div>
+            <h2>Alimentos</h2>
+            <ul>
+              {alimentosState.map((alimento) => (
+                <li key={alimento.id} onClick={() => handleItemClick(alimento)}>
+                  <strong>{alimento.nome}</strong> - {alimento.grupo}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      case 'receitas':
+        return (
+          <div>
+            <h2>Receitas</h2>
+            <ul>
+              {receitasState.map((receita) => (
+                <li key={receita.id} onClick={() => handleItemClick(receita)}>
+                  <strong>{receita.nome}</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      case 'descricao':
+        return (
+          <div>
+            <h2>Descrição do Item</h2>
+            {currentItem && (
+              <div>
+                <h3>{currentItem.nome}</h3>
+                {currentItem.ingredientes && (
+                  <div>
+                    <h4>Ingredientes:</h4>
+                    <ul>
+                      {currentItem.ingredientes.map((ingrediente: string, index: number) => (
+                        <li key={index}>{ingrediente}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {currentItem.modo_preparo && (
+                  <div>
+                    <h4>Modo de Preparo:</h4>
+                    <p>{currentItem.modo_preparo}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      default:
+        return (
+          <div>
+            <h1>Menu Nutri</h1>
+            <div>
+              <h3>Selecione uma opção:</h3>
+              <button onClick={() => setCurrentPage('alimentos')}>Alimentos</button>
+              <button onClick={() => setCurrentPage('receitas')}>Receitas</button>
+            </div>
+          </div>
+        );
+    }
+  };
 
-      <section>
-        <h2>Alimentos</h2>
-        <ul>
-          {currentAlimentos.map((alimento) => (
-            <li key={alimento.id}>
-              <strong>{alimento.nome}</strong> - {alimento.grupo}
-            </li>
-          ))}
-        </ul>
-        {/* Paginação dos alimentos */}
-        <div className="pagination">
-          {alimentos.length > itemsPerPage &&
-            Array.from({ length: Math.ceil(alimentos.length / itemsPerPage) }).map((_, index) => (
-              <button key={index} onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </button>
-            ))}
-        </div>
-      </section>
-
-      <section>
-        <h2>Receitas</h2>
-        <ul>
-          {currentReceitas.map((receita) => (
-            <li key={receita.id}>
-              <strong>{receita.nome}</strong>
-              <ul>
-                {receita.ingredientes.map((ingrediente: string) => (
-                  <li key={ingrediente}>{ingrediente}</li>
-                ))}
-              </ul>
-              <p>{receita.modo_preparo}</p>
-              <p>Porções: {receita.porcoes}</p>
-              <p>Tempo de Preparo: {receita.tempo_preparo}</p>
-            </li>
-          ))}
-        </ul>
-        {/* Paginação das receitas */}
-        <div className="pagination">
-          {receitas.length > itemsPerPage &&
-            Array.from({ length: Math.ceil(receitas.length / itemsPerPage) }).map((_, index) => (
-              <button key={index} onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </button>
-            ))}
-        </div>
-      </section>
-    </div>
-  );
+  return <div>{renderPage()}</div>;
 };
 
 export default MenuPage;
