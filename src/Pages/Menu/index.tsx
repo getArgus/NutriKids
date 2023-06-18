@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import data from '../../database/db.json';
+import Header from '../../components/Header';
 
 const MenuPage: React.FC = () => {
   const { alimentos, receitas } = data;
@@ -23,6 +24,7 @@ const MenuPage: React.FC = () => {
       case 'alimentos':
         return (
           <div>
+            <Header />
             <h2>Alimentos</h2>
             <ul>
               {alimentosState.map((alimento) => (
