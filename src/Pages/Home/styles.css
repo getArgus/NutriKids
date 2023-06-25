@@ -1,62 +1,90 @@
-.Content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    height: 100vh;
-  }
-  
-  .Text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .Image {
-    display: flex;
-    justify-content: center;
     align-items: center;
   }
-  
-  .Image img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 25px;
-  }
-  
-  .Section {
+
+  .Inicio {
     display: grid;
-    place-items: center;
-    height: 200px;
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 1px solid #fff;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    margin-bottom: 5rem;
+}
+
+.subtitle {
+    margin-top: -13rem;
+    margin-left: 7rem;
+}
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
   }
   
-  .Beneficions {
-    background-color: #ff8080;
+.h2 {
+    display: grid;
+    place-self: center;
+    justify-items: center;
+}
+
+img.selected-image {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    place-self: center;
+}
+
+.carousel {
+    display: grid;
+}
+  
+  .benefit {
+    width: 273px;
+    height: 119px;
+    border-radius: 10px;
+    background: #8CD17D;
   }
   
-  .Nossso {
-    background-color: #66cc99;
+  .titulo-teste {
+    font-size: 18px;
+    font-family: Lato;
+    font-weight: 700;
+    line-height: 124.6%;
   }
-  
+
+  .Beneficios {
+    margin-bottom: 35px;
+}
+
+  .conteudo-teste {
+    font-size: 10px;
+  }
+
+  .Publico {
+    background-color: #323238;
+    padding: 20px;
+  }
+
   .Pratos {
-    background-color: #ffcc66;
+    padding: 20px;
   }
-  
-  @media screen and (min-width: 768px) {
-    .Content {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media screen and (min-width: 1024px) {
-    .Content {
-      grid-template-columns: 1fr 1fr;
-    }
+
+  .footer {
+    background-color: #323238;
+    color: #f2f2f2;
+    font-weight: bold;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
