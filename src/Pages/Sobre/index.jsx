@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import data from '../../database/db.json';
 import Header from '../../components/Header';
 
-const MenuPage: React.FC = () => {
+const Sobre = () => {
   const { alimentos, receitas } = data;
-  const [alimentosState, setAlimentos] = useState<any[]>([]);
-  const [receitasState, setReceitas] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState<string | null>(null);
-  const [currentItem, setCurrentItem] = useState<any | null>(null);
+  const [alimentosState, setAlimentos] = useState([]);
+  const [receitasState, setReceitas] = useState([]);
+  const [currentPage, setCurrentPage] = useState(null);
+  const [currentItem, setCurrentItem] = useState(null);
 
   useEffect(() => {
     setAlimentos(alimentos);
     setReceitas(receitas);
   }, [alimentos, receitas]);
 
-  const handleItemClick = (item: any) => {
+  const handleItemClick = (item) => {
     setCurrentItem(item);
     setCurrentPage(item.tipo);
   };
@@ -38,6 +38,7 @@ const MenuPage: React.FC = () => {
       case 'receitas':
         return (
           <div>
+            <Header />
             <h2>Receitas</h2>
             <ul>
               {receitasState.map((receita) => (
@@ -59,7 +60,7 @@ const MenuPage: React.FC = () => {
                   <div>
                     <h4>Ingredientes:</h4>
                     <ul>
-                      {currentItem.ingredientes.map((ingrediente: string, index: number) => (
+                      {currentItem.ingredientes.map((ingrediente, index) => (
                         <li key={index}>{ingrediente}</li>
                       ))}
                     </ul>
@@ -78,6 +79,7 @@ const MenuPage: React.FC = () => {
       default:
         return (
           <div>
+            <Header />
             <h1>Menu Nutri</h1>
             <div>
               <h3>Selecione uma opção:</h3>
@@ -92,4 +94,4 @@ const MenuPage: React.FC = () => {
   return <div>{renderPage()}</div>;
 };
 
-export default MenuPage;
+export default Sobre;
